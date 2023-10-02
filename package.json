@@ -48,6 +48,7 @@
         "vue": "3.x"
     },
     "devDependencies": {
+        "@babel/types": "^7.23.0",
         "@rushstack/eslint-patch": "^1.2.0",
         "@semantic-release/git": "^10.0.1",
         "@semantic-release/github": "^8.0.7",

@@ -1309,8 +1309,8 @@ export default {
 			if (this.clearSearchOnBlur({ clearSearchOnSelect, multiple })) {
 			  this.search = ''
 			}
-			this.closeSearchOptions()
 		}
+		this.closeSearchOptions()
         return
       }
       // Fixed bug where no-options message could not be closed

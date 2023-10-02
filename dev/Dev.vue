@@ -14,6 +14,9 @@ export default {
     selected: null,
     config: {
       options: countries,
+	  submitSearchOnBlur:true,
+	  taggable:true,
+	  "push-tags": true,
     },
   }),
 }

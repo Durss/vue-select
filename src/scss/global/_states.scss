@@ -16,6 +16,7 @@ $disabled-cursor: $vs-state-disabled-cursor;
 .vs--disabled {
   .vs__dropdown-toggle,
   .vs__clear,
+  .vs__submit,
   .vs__search,
   .vs__selected,
   .vs__open-indicator {
@@ -35,6 +36,11 @@ $disabled-cursor: $vs-state-disabled-cursor;
 .v-select[dir="rtl"] {
   .vs__actions {
     padding: 0 3px 0 6px;
+  }
+
+  .vs__submit {
+    margin-left: 6px;
+    margin-right: 0;
   }
 
   .vs__clear {

@@ -56,6 +56,19 @@
       </div>
 
       <div ref="actions" class="vs__actions">
+		<button
+			v-if="submitSearchOnBlur"
+          v-show="searching"
+          ref="submitButton"
+          :disabled="disabled"
+          type="button"
+          class="vs__submit"
+          title="Submit Selected"
+          aria-label="Submit Selected"
+          @click="submitSelection"
+		>
+			<component :is="childComponents.Submit" />
+		</button>
         <button
           v-show="showClearButton"
           ref="clearButton"
@@ -283,6 +296,15 @@ export default {
     clearSearchOnSelect: {
       type: Boolean,
       default: true,
+    },
+
+    /**
+     * Enables/disables submitting the search text on blur.
+     * @type {Boolean}
+     */
+	 submitSearchOnBlur: {
+      type: Boolean,
+      default: false,
     },
 
     /**
@@ -1051,6 +1073,10 @@ export default {
       this.updateValue(this.multiple ? [] : null)
     },
 
+    submitSelection() {
+		this.isComposing && this.typeAheadSelect()
+    },
+
     /**
      * Called from this.select after each selection.
      * @param  {Object|String} option
@@ -1121,7 +1147,7 @@ export default {
       }
 
       if (this.open && targetIsNotSearch) {
-        this.searchEl.blur()
+        this.searchEl.blur();
       } else if (!this.disabled) {
         this.open = true
         this.searchEl.focus()
@@ -1276,11 +1302,15 @@ export default {
       if (this.mousedown && !this.searching) {
         this.mousedown = false
       } else {
-        const { clearSearchOnSelect, multiple } = this
-        if (this.clearSearchOnBlur({ clearSearchOnSelect, multiple })) {
-          this.search = ''
-        }
-        this.closeSearchOptions()
+		if(this.searching && this.submitSearchOnBlur) {
+			this.typeAheadSelect();
+		}else{
+			const { clearSearchOnSelect, multiple } = this
+			if (this.clearSearchOnBlur({ clearSearchOnSelect, multiple })) {
+			  this.search = ''
+			}
+			this.closeSearchOptions()
+		}
         return
       }
       // Fixed bug where no-options message could not be closed

@@ -18,6 +18,7 @@
 .vs--disabled {
     .vs__dropdown-toggle,
     .vs__clear,
+    .vs__submit,
     .vs__search,
     .vs__selected,
     .vs__open-indicator {

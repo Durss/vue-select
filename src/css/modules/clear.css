@@ -1,6 +1,6 @@
 /* Clear Button */
 
-.vs__clear {
+.vs__clear, .vs__submit {
     fill: var(--vs-controls-color);
     padding: 0;
     border: 0;

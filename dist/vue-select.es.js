@@ -650,8 +650,9 @@ https://vue-select.org/api/props.html#getoptionkey`, e, t);
           this.typeAheadSelect();
         else {
           const { clearSearchOnSelect: e, multiple: t } = this;
-          this.clearSearchOnBlur({ clearSearchOnSelect: e, multiple: t }) && (this.search = ""), this.closeSearchOptions();
+          this.clearSearchOnBlur({ clearSearchOnSelect: e, multiple: t }) && (this.search = "");
         }
+        this.closeSearchOptions();
         return;
       }
       if (this.search.length === 0 && this.options.length === 0) {
